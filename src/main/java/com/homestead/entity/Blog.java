@@ -10,7 +10,7 @@ public class Blog implements Serializable {
 
     private String title;
 
-    private Integer userId;
+    private Integer authorId;
 
     private User author;
 
@@ -20,12 +20,12 @@ public class Blog implements Serializable {
 
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getAuthorId() {
+        return authorId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
     }
 
     public Integer getId() {

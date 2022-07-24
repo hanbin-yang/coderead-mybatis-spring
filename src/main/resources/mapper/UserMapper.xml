@@ -11,7 +11,7 @@
     <resultMap id="blogMapCollection" type="com.homestead.entity.Blog" autoMapping="true">
         <id column="id" property="id" />
         <result column="title" property="title" />
-        <result column="user_id" property="userId" />
+        <result column="author_id" property="authorId" />
         <collection column="id" property="comments" select="selectCommentByBlogId" />
     </resultMap>
     <select id="selectBlogByIdCollection" resultMap="blogMapCollection">
@@ -21,8 +21,8 @@
     <resultMap id="blogMapAssociation" type="com.homestead.entity.Blog" autoMapping="true">
         <id column="id" property="id" />
         <result column="title" property="title" />
-        <result column="user_id" property="userId" />
-        <association column="user_id" property="author" select="selectUserByUserId"/>
+        <result column="author_id" property="authorId" />
+        <association column="author_id" property="author" select="selectUserByUserId"/>
     </resultMap>
 
     <select id="selectBlogByIdAssociation" resultMap="blogMapAssociation">
@@ -84,6 +84,7 @@
 
     <!-- 懒加载测试 -->
     <resultMap id="blogMap2" type="com.homestead.entity.Blog" autoMapping="true">
+        <id column="id" property="id" />
         <result column="title" property="title" />
         <collection column="id" property="comments" select="selectCommentsByBlog" fetchType="lazy" />
     </resultMap>

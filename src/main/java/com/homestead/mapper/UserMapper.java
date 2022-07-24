@@ -25,7 +25,7 @@ public interface UserMapper {
     User selectByIdAndName(@Param("id") Integer id, @Param("name") String name);
 
     @Select({" select * from users where id=#{1}"})
-    User selectByid3(Integer id);
+    User selectById3(Integer id);
 
     @Select({" select * from users where name='${name}'"})
     @Options(statementType = StatementType.PREPARED)

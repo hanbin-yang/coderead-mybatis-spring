@@ -12,7 +12,7 @@ public class BlogPo {
 
     private String body;
 
-    private Integer userId;
+    private Integer authorId;
 
     public Integer getId() {
         return id;
@@ -38,11 +38,11 @@ public class BlogPo {
         this.body = body;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getAuthorId() {
+        return authorId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
     }
 }
