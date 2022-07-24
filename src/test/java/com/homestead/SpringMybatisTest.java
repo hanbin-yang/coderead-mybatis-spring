@@ -13,21 +13,23 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
  * @since 2022/4/5 21:54
  */
 public class SpringMybatisTest {
+
     @Test
     public void testBySpring() {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring-context.xml");
         UserMapper mapper = context.getBean(UserMapper.class);
-        //  动态代理                                  动态代理               mybatis
-        //    |                                         |
-        //   \|/                                       \|/
-        // mapper   -> SqlSessionTemplate -> SqlSessionInterceptor -> SqlSessionFactory
+        //  动态代理          SqlSession                动态代理                  mybatis
+        //    |                  |                       |                        |
+        //   \|/                \|/                     \|/                      \|/
+        // mapper -> SqlSessionTemplate  ->  SqlSessionInterceptor   ->   SqlSessionFactory
 
-        DataSourceTransactionManager txManager = (DataSourceTransactionManager) context.getBean("transactionManager");
+        DataSourceTransactionManager txManager = context.getBean("transactionManager", DataSourceTransactionManager.class);
         // 手动开启事务
-        TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
+        TransactionStatus transactionStatus = txManager.getTransaction(new DefaultTransactionDefinition());
 
-        User u1 = mapper.selectUserByUserId(10);
-        User u2 = mapper.selectByid(10);
+        User u1 = mapper.selectUserByUserId(111);
+        User u3 = mapper.selectUserByUserId(111);
+        User u2 = mapper.selectById(111);
         System.out.println("u1 == u2 " + (u1 == u2));
     }
 }

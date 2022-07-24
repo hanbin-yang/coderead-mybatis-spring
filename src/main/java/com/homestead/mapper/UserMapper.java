@@ -19,7 +19,7 @@ public interface UserMapper {
 
     @Select({" select * from users where id=#{1}"})
     //@Options(flushCache = Options.FlushCachePolicy.TRUE)
-    User selectByid(Integer id);
+    User selectById(Integer id);
 
     @Select({" select * from users where id=#{id} and name=#{name}"})
     User selectByIdAndName(@Param("id") Integer id, @Param("name") String name);

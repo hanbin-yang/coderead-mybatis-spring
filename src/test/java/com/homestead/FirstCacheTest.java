@@ -39,9 +39,9 @@ public class FirstCacheTest {
     public void test1() {
         SqlSession sqlSession = factory.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        User user = mapper.selectByid(10);
-        User user1 = mapper.selectByid(10);
-        List<Object> list = sqlSession.selectList("org.coderead.mybatis.UserMapper.selectByid", 10);
+        User user = mapper.selectById(111);
+        User user1 = mapper.selectById(111);
+        List<Object> list = sqlSession.selectList("com.homestead.mapper.UserMapper.selectById", 111);
         System.out.println("end");
     }
 
@@ -49,8 +49,9 @@ public class FirstCacheTest {
     public void test2() {
         SqlSession sqlSession = factory.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        mapper.selectByid(10);
+        User user = mapper.selectById(111);
         sqlSession.clearCache();
-        mapper.selectByid(10);
+        User user1 = mapper.selectById(111);
+        System.out.println("end");
     }
 }
