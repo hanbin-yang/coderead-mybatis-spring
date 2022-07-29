@@ -26,7 +26,7 @@ public class LazyLoadTest {
     @Before
     public void init() {
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-        factory = builder.build(NestMapTest.class.getResourceAsStream("/mybatis-config.xml"));
+        factory = builder.build(NestMapCircularTest.class.getResourceAsStream("/mybatis-config.xml"));
         configuration = factory.getConfiguration();
         configuration.setLazyLoadTriggerMethods(new HashSet<>());
     }

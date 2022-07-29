@@ -9,10 +9,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * 联合查询映射 -- 循环依赖
  * @author HanBin_Yang
  * @since 2022/7/24 22:26
  */
-public class CircularReferenceTest {
+public class JoinCircularReferenceTest {
     private SqlSessionFactory factory;
 
     @Before

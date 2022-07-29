@@ -58,4 +58,6 @@ public interface UserMapper {
     Blog selectByBlogIdCollection(Integer id);
 
     Blog selectByBlogIdCollectionCircu(Integer id);
+
+    List<User> selectByIds(@Param("list") List<Integer> ids);
 }

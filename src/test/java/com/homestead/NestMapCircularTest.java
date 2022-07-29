@@ -9,19 +9,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * 子查询映射 -- 循环依赖
  * @author HanBin_Yang
  * @since 2022/7/24 10:08
  */
-public class NestMapTest {
+public class NestMapCircularTest {
 
     private SqlSessionFactory factory;
 
     @Before
     public void init() {
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-        factory = builder.build(NestMapTest.class.getResourceAsStream("/mybatis-config.xml"));
+        factory = builder.build(NestMapCircularTest.class.getResourceAsStream("/mybatis-config.xml"));
     }
-
 
     @Test
     public void testAssociation() {

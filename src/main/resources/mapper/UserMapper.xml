@@ -125,4 +125,12 @@
                  left join comment c on a.id = c.blog_id
         where a.id = #{id}
     </select>
+    <select id="selectByIds" resultType="com.homestead.entity.User">
+        select id, name, age, sex, email, phone_number as phoneNumber, create_time as createTime
+        FROM users
+        WHERE id in
+        <foreach collection="list" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
 </mapper>
